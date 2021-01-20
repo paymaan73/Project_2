@@ -1,4 +1,4 @@
- <% if current_user && current_user.admin? %>
+ <% if current_user && (current_user.admin? || current_user.master?) %>
         <td><%= link_to 'Show', obj %></td>
         <td><%= link_to 'Edit', edit_post_path(obj) %></td>
         <td><%= link_to 'Destroy', obj, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  resources :users, only:[:index]
+  resources :users, only: %i[index]
+  delete 'users/:id', to: 'users#destroy', as: :admin_destroy_user
+
 
   devise_for :users, path: 'auth', path_names: {
     sign_in: 'login',
@@ -17,5 +19,4 @@ Rails.application.routes.draw do
   end
 
   resources :posts
-  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 end

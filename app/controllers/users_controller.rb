@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   def destroy
 
     @user = User.find(params[:id])
-    @user.posts.delete_all
 
     if @user.destroy
       redirect_to users_path , notice: "Delete successfully user"

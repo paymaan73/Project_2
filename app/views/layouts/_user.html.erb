@@ -1,0 +1,7 @@
+        <% if current_user && current_user.user? %>
+            <%= link_to "Log_out", destroy_session_path(current_user), method: :delete %>|
+            <%= link_to "Profile", edit_user_registration_path %>
+        <% elsif !current_user.present? %>
+            <%= link_to "Create_Account", new_user_registration_path %>|
+            <%= link_to "Log_in", user_session_path %>
+        <% end %>

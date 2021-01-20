@@ -1,0 +1,38 @@
+
+<% if current_user && current_user.admin? %>
+
+    <section class="profile">
+
+        <header>
+            <h3>Admin</h3>
+        </header>
+
+        <div>
+            <div>
+                <%= link_to "Users", users_path %>
+            </div>
+        </div>
+
+        <div>
+                <div>
+                <%= link_to "Posts", posts_path %>
+                </div>
+        </div>
+
+            <hr class="hr">
+            <br/>
+
+            <footer>
+
+                <div>
+                    <%= link_to "Loguot", destroy_session_path(current_user), method: :delete %>
+                </div>
+
+                <div>
+                    <%= link_to "Profile", edit_user_registration_path %>
+                </div>
+
+            </footer>
+
+        </section>
+<% end %>

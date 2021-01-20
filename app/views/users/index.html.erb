@@ -1,0 +1,21 @@
+<h1>Users</h1>
+<% if current_user && current_user.admin? %>
+    <% @users.each do |user| %>
+        <article>
+            <header>
+                <h3>Email:<%= user.email %></h3>
+                <strong>Posts:<small><%= user.posts.count %></small></strong>
+            </header>
+
+            <div>
+                <%= button_to "Delete account",admin_destroy_user_path(user), data: { confirm: "Are you sure?" }, method: :delete %>
+                <%= button_to "Edit", "#" %>
+            </div>
+
+            <footer style="background: #cecece;">
+                <strong>Created:<small><%= time_ago_in_words(user.created_at) %></small></strong>
+            </footer>
+
+        </article>
+    <% end %>
+<% end %>
